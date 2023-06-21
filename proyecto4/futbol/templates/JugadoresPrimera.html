@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jugadores usuario{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+
+        <h1 style="color:blue;">Jugadores primera división</h1>
+      {{listado_empleados}}
+      <table class="table">
+              <tr>
+                  <th>NOMBRE</th>
+                  <th>APELLIDO</th>
+                  <th>EQUIPO</th>
+                  <th>NUMERO_CAMISETA</th>
+              </tr>
+              {% for nom,ape,equi,num in listado_empleados%}
+
+                  <tr>
+                      <td>{{nom}}</td>
+                      <td>{{ape}}</td>
+                      <td>{{equi}}</td>
+                      <td>{{num}}</td>
+                  </tr>
+             {% endfor%}
+
+
+      </table>
+
+
+</div>
+
+{% endblock content %}

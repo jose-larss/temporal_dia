@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edad usuario{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+
+              <video width="640" height="360" poster="dostontosmuytontos.jpg" controls autoplay>
+                 <!--  El atributo “poster”, muestra una imagen al empezar, hasta que no se le da al “play”-->
+                  <source src="PeliHTML5.mp4" type="video/mp4"  /><!-- Safari , IE9 -->
+                  <source src="PeliHTML5.webm" type="video/webm" /><!-- Chrome10+, Ffx4+, Opera10.6+ -->
+                  <source src="PeliHTML5.ogv" type="video/ogg"  /><!-- Firefox3.6+ / Opera 10.5+ -->
+                  <object width="640" height="360" type="application/x-shockwave-flash" data="player.swf">
+
+                      <param name="movie" value="PeliHTML5.swf" />
+                      <param name="flashvars"
+                          value="autostart=true&controlbar=over&image=poster.jpg&file=archivo.mp4" />
+                      <!-- Imágen antes de la carga -->
+                      <img src="dostontosmuytontos.jpg" width="640" height="360" alt="alt" title="title" />
+                  </object>
+              </video>
+
+
+          </div>
+          <div class="col-4">
+
+            <form oninput="txtResultado.value = parseInt(txt1.value) + parseInt(txt2.value)">
+                <input type="number" name="txt1" />
+                <input type="number" name="txt2" />
+                <output name="txtResultado">0</output>
+            </form>
+
+
+            <audio src="Halamadrid.oga" controls>
+              <a href="Halamadrid.oga">Himno del Real Madrid</a>
+            </audio>
+            <br/>
+
+          </div>
+          <div class="col-4">
+
+
+
+          </div>
+        </div>
+    </div>
+
+{% endblock content %}

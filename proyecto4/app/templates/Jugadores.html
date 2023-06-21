@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edad usuario{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+
+                <table class="table" border="1">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Demar</th>
+                      <th scope="col">Nº Cam</th>
+                    </tr>
+                  </thead>
+                    {% for jug in listado_jugadores %}
+                        <tbody>
+                            <tr>
+
+                                <td>{{jug.Nombre}}</td>
+                                <td>{{jug.Demarcacion}}</td>
+                                <td>{{jug.Numero}}</td>
+                            </tr>
+                        </tbody>
+
+                   {% endfor %}
+                </table>
+
+                <label>Jugadores: </label>
+                <input type="text" name="txtagenda" list="agenda">
+
+                <datalist id="agenda">
+                    {% for jug in listado_jugadores %}
+                        <option value="{{jug.Nombre}}"></option>
+                    {% endfor %}
+
+                </datalist>
+
+
+            </div>
+            <div class="col-4">
+
+                <img src="{% static 'img/2tontos.png'%}">
+
+
+            </div>
+            <div class="col-4"></div>
+        <div>
+    <div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Amigos{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+
+            <label>Jugadores: </label>
+            <input type="text" name="txtamigos" list="jugadores">
+
+                <datalist id="jugadores">
+                    {% for item in lista_jugadores %}
+                        <option value="{{item.Nombre}}">{{item.Demarcacion}} {{item.Numero}}</option>
+                    {% endfor %}
+
+                </datalist>
+
+            </div>
+          <div class="col-4">
+
+
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre: </label>
+                  <input type="text" name="txtamigos" list="amigos" class="form-control" id="exampleFormControlInput1" placeholder="name">
+
+                    <datalist id="amigos">
+                        {% for item in lista_amigos %}
+                            <option value="{{item.Nombre}}">{{item.Demarcacion}} {{item.Numero}}</option>
+                        {% endfor %}
+
+                    </datalist>
+                  <button type="button" class="btn btn-dark">enviar</button>
+
+              </div>
+
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+          </div>
+          <div class="col-4"></div>
+        </div>
+    </div>
+
+
+{% endblock content %}

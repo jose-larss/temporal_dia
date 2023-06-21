@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cosas HTML5{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+
+            <div class="card" style="width: 18rem;">
+                  <img src="{% static 'img/escudoReal.png' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+
+          </div>
+          <div class="col-4">
+
+                <figure>
+                    <img src="{% static 'img/escudoReal.png' %}">
+                </figure>
+
+                <figcaption>
+                        <img src="{% static 'img/escudoReal.png' %}">
+                        El Real Madrid Club de Fútbol, mejor equipo de la historia.
+                         <a href="http://www.realmadrid.com">Visita la web oficial</a>
+                </figcaption>
+
+                <p>
+                Aprende <mark>Pádel</mark> rápidamente, con unos pequeños consejos de los profesionales del deporte.
+                </p>
+
+          </div>
+          <div class="col-4">
+
+
+            <form action="" method="">
+              <fieldset>
+                  <legend>Datos</legend>
+                  <input id="range" type="range" min="1" max="201" value="5" step="50">
+                  <input type="button" onclick="alert(document.getElementById('range').value);" value="Testear">
+              </fieldset>
+          </form>
+
+
+
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col-8">
+
+          <form action="" method="">
+
+              <fieldset>
+                <legend>Datos</legend>
+                  <input type="text" placeholder="Tu nombre" name="nombre" required autofocus>
+                  <input type="email" placeholder="Correo electrónico" name="email" required>
+                  <input type="url" placeholder="Tu web" name="url">
+                  <input type="date" name="fecha">
+                  <input type="submit" value="Enviar">
+                 </fieldset>
+            </form>
+
+
+        </div>
+        <div class="col-4">
+
+          <form action="" method="">
+            <fieldset>
+                <legend>Datos</legend>
+                <input id="range" type="range" min="1" max="201" value="5" step="50">
+                <input type="button" onclick="alert(document.getElementById('range').value);" value="Testear">
+            </fieldset>
+          </form>
+
+
+        </div>
+
+    </div>
+
+{% endblock content %}
