@@ -2,13 +2,19 @@ from django.shortcuts import render
 from futbol.models import Jugador
 
 
-def index(request):
+def listar_jugadores(request):
     #Instancias la clase
-    emple = Jugador()
+    jugador = Jugador()
+    equipo = Jugador()
+
     #llamada al metodo de la clase devolverDato()
-    cursor=emple.devolverdato()
+    jugadores =jugador.devolverdato()
+    consulta = "SELECT * FROM equipos"
+    equipos = equipo.devolverdato_funcion(consulta)
+    print(equipos)
 
     contexto = {
-        'listado_empleados': cursor
+        'listado_jugadores': jugadores,
+        'listado_equipos':equipos,
     }
     return render(request, "JugadoresPrimera.html", contexto)

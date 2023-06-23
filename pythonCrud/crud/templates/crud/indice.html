@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+                    <h1>Crud Con Django</h1>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+
+                        <a href="{% url 'alta' %}"><h1>Alta</h1></a>
+                        <a href="{% url 'baja' %}"><h1>Baja</h1></a>
+                        <a href="{% url 'modificar' %}"><h1>Modificación</h1></a>
+                        <a href="{% url 'leer' %}"><h1>Ver Datos</h1></a>
+
+                        <table class="table-light">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Dept No:</th>
+                                <th scope="col">Nombre:</th>
+                                <th scope="col">Localidad: </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for val1, val2, val3 in departamentos %}
+                              <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{val1}}</td>
+                                <td>{{val2}}</td>
+                                <td>{{val3}}</td>
+                              </tr>
+                            {% endfor %}
+                            </tbody>
+                          </table>
+
+                        <h3>{{men}}</h3>
+                </div>
+            <div class="col-2">
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock content %}

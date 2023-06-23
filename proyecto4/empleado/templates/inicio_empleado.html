@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Amigos{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+
+          <form method="post" action="{% url 'empleados' %}">
+              {% csrf_token %}
+                <h4>Introduzca Oficio para ver Apellido y Salario de los empleados:</h4>
+                Oficio: <input type="text" name="txtOficio" /><br/><br/>
+                <input type="submit" value="Ver Datos">
+          </form>
+    </div>
+
+{% endblock content %}

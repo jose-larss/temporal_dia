@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jugadores usuario{% endblock title %}
+
+{% block content %}
+
+  <div class="container">
+          <div class="row">
+            <div class="col-6">
+              {% for item in dato %}
+
+              {{item.0}}
+                  {{item.1}}
+                  {{item.2}}
+                  {{item.3}}
+                  {{item.4}}
+                  {{item.5}}
+                  {{item.6}}
+                  {{item.7}}
+                  {{item.8}}
+                  {{item.9}}
+              {% endfor %}
+            </div>
+            <div class="col-6">
+
+
+            </div>
+          </div>
+  </div>
+
+{% endblock content %}

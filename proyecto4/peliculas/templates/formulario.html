@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Formulario usuario{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+        <div class="row">
+          <div class="col-6">
+
+
+              <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+
+            <form action="" method="">
+
+                Nombre: <input type="text" name="nombre">
+                <br>
+                Password: <input type="password" name="pass">
+                <br>
+                Mayor de edad:
+                SI: <input type="radio" value="SI" name="rbEdad">
+                NO: <input type="radio" value="NO" name="rbEdad">
+
+                <br>
+                Aficciones:
+                <br>
+                Deporte: <input type="checkbox" value="deporte" name="chkAficiones">
+                Programar: <input type="checkbox" value="programar" name="chkAficiones">
+                Viajar: <input type="checkbox" value="viajar" name="chkAficiones">
+                Salvame deluxe: <input type="checkbox" value="salvame" name="chkAficiones">
+                <br>
+                <select name="cmbCiudad" size="3" multiple>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Sevilla">Sevilla</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Cuenca">Cuenca</option>
+                </select>
+                <br>
+                <textarea cols="100" rows="10" name="txtComentario">
+
+                </textarea>
+                <br>
+                <input type="submit" value="Buscar">
+                <br>
+
+            </form>
+
+
+          </div>
+          <div class="col-6"></div>
+        </div>
+</div>
+
+{% endblock content %}

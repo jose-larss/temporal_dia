@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+      <h1>Leer departamentos</h1>
+
+
+      <table class="table-light">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Dept No:</th>
+                <th scope="col">Nombre:</th>
+                <th scope="col">Localidad: </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for val1, val2, val3 in departamentos %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{val1}}</td>
+                <td>{{val2}}</td>
+                <td>{{val3}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+    </div>
+
+{% endblock content %}

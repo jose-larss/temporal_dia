@@ -22,17 +22,22 @@
           <a class="nav-link" href="{% url 'videos' %}">Videos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'listar_equipos' %}">listar equipos</a>
+          <a class="nav-link" href="{% url 'listar_jugadores' %}">listar equipos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listar_peliculas' %}">listar peliculas</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Peliculas
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="{% url 'listar_peliculas' %}">Listar Peliculas</a></li>
+            <li><a class="dropdown-item" href="{% url 'insertar_pelicula' %}">Insertar Pelicula</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="{% url 'formulario' %}">Formulario</a></li>
+            <li><a class="dropdown-item" href="{% url 'index_empleado' %}">Buscar Oficio</a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
           </ul>
         </li>
         <li class="nav-item">

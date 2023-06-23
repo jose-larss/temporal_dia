@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+      <h1>Modificar departamento</h1>
+
+      <form method="post" action="{% url 'modificar' %}">
+          {% csrf_token %}
+          <label for="exampleFormControlInput1" class="form-label">Número Departamento: </label>
+          <fieldset>
+            <input type="text" name="codigo" list="departamento" />
+              <datalist id="departamento">
+                    {% for dept in departamentos %}
+                        <option value="{{dept.0}}">
+                    {% endfor %}
+              </datalist>
+
+          </fieldset>
+
+        <label for="exampleFormControlInput1" class="form-label">Nueva Localidad: </label>
+        <input name="localidad" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce Localidad">
+
+        <button type="submit" class="btn btn-primary btn-lg">Modificar Departamento</button>
+      </form>
+
+
+
+    </div>
+
+{% endblock content %}

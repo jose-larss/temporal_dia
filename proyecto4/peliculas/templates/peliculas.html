@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jugadores usuario{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>peliculas</h1>
+
+
+                <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nº</th>
+                          <th scope="col">titulo</th>
+                          <th scope="col">Foto</th>
+                        </tr>
+                      </thead>
+                        {% for titulo, foto, argumento in peliculas %}
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{forloop.counter}}</th>
+                          <td>{{titulo}}</td>
+                            <td><img src="{% static 'CARTELES/'%}{{foto}}" width="200px"></td>
+                            <td>{{argumento}}</td>
+
+                        </tr>
+
+                      </tbody>
+                     {% endfor %}
+                    </table>
+
+
+
+
+
+            </div>
+        </div>
+</div>
+
+{% endblock content %}

@@ -17,3 +17,12 @@ class Jugador:
             print("Error: ", error)
 
         return self.cursor
+
+    def devolverdato_funcion(self, consulta):
+
+        try:
+            self.cursor.execute(consulta)
+        except self.connection.Error as error:
+            print("Error: ", error)
+
+        return self.cursor
