@@ -6,7 +6,9 @@ from crud.models import Departamento
 def index(request):
     men = ""
     dept = Departamento()
-    departamentos = dept.lectura_departamento()
+    consulta = "SELECT * FROM dept order by dept_no"
+    #departamentos = dept.lectura_departamento()
+    departamentos, contador = dept.lectura_departamento(consulta, param=())
 
     return render(request, 'crud/indice.html', {'departamentos':departamentos,
                                                 'men':men})
@@ -17,59 +19,63 @@ def alta_dept(request):
     if request.method != 'POST':
         return render(request,'crud/alta.html')
     else:
-
+        dept = Departamento()
         departamento = request.POST['departamento']
         nombre = request.POST['nombre']
         localidad = request.POST['localidad']
 
-        dept = Departamento()
+        consulta = ("INSERT INTO dept (dept_no,dnombre,loc) VALUES (:P1, :P2, :P3)")
 
-        departamentos = dept.insertar_departamento(departamento, nombre, localidad)
-        messages.success(request, f"Enhorabuena has insertado un registro")
+        departamentos, contador = dept.lectura_departamento(consulta, (departamento, nombre, localidad))
+        if contador > 0:
+            messages.success(request,f"Enhorabuena has insertado un registro", extra_tags='success')
+        else:
+            messages.error(request,f"Error Ora-0001 Unique constraint Violated", extra_tags='error' )
 
         return redirect('indice') #, mensaje=mensaj
 
 def leer_departamentos(request):
     dept = Departamento()
+    consulta = "SELECT * FROM dept order by dept_no"
 
-    departamentos = dept.lectura_departamento()
+    departamentos,contador = dept.lectura_departamento(consulta)
 
     return render(request, 'crud/leer.html', {'departamentos':departamentos})
 
-def baja_departamento(request):
+def baja_departamento(request, id_borrar):
 
     dept = Departamento()
+    consulta = ("Delete from dept where dept_no=:param1")
+    departamento, contador = dept.lectura_departamento(consulta, (id_borrar,))
 
-    departamentos = dept.lectura_departamento()
-    if request.method != 'POST':
-        return render(request, 'crud/baja.html', {'departamentos':departamentos})
-    else:
-        codigo = int(request.POST['codigo'])
-        print(type(codigo))
-        dept = Departamento()
+    messages.success(request, f"Enhorabuena has borrado el departamento numero {id_borrar}", extra_tags='success')
 
-        departamentos = dept.borrar_departamento(codigo)
+    return redirect('indice')
 
-        messages.success(request, f"Enhorabuena has borrado el departamento")
-
-        return redirect('indice')
-
-def modificar_departamento(request):
+def modificar_departamento(request, id_modi):
 
     dept = Departamento()
-    departamentos = dept.lectura_departamento()
+    consulta = ("SELECT * FROM dept where dept_no=:param1")
+    dept, contador = dept.lectura_departamento(consulta,(id_modi,))
+
+    for item in dept:
+        pass
 
     if request.method != 'POST':
-        return render(request, 'crud/modificar.html', {'departamentos':departamentos})
+        return render(request, 'crud/modificar.html', {#'departamentos':departamentos, 
+                                                        'dept':item})
+    
     else:
+        dept2 = Departamento()
+
         codigo = request.POST['codigo']
+        nombre = request.POST['nombre']
         localidad = request.POST['localidad']
-        print(request.POST['codigo'])
-        print(request.POST['localidad'])
 
-        dept = Departamento()
+        consulta = ("Update dept set loc=:Param1, dnombre=:Param2  where dept_no=:Param3")
 
-        departamentos = dept.modificar_departamento(localidad, codigo)
+        departamentos, contador = dept2.lectura_departamento(consulta, (localidad, nombre ,codigo))
 
-        messages.success(request, f"Enhorabuena has Modificado el departamento")
+        messages.success(request, f"Enhorabuena has Modificado el departamento a {codigo} {nombre} {localidad}", extra_tags='success')
         return redirect('indice')
+    

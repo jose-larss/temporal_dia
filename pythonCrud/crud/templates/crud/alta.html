@@ -4,25 +4,36 @@
 
 {% block content %}
     <div class="container">
-      <h1>Alta departamento</h1>
-        <div class="mb-3">
+        <div class="row">
 
-          <form method="post" action="{% url 'alta' %}">
-                {% csrf_token %}
-                <label for="exampleFormControlInput1" class="form-label">Número Departamento: </label>
-                <input name="departamento" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce departamento">
+          <div class="col-4">
+      
+          </div>
+          <div class="col-4">
+            <h1>Alta departamento</h1>
+            <br>
+            <div class="mb-3">
 
-                <label for="exampleFormControlInput1" class="form-label">Nombre Departamento: </label>
-                <input name="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce Nombre">
+            <form method="post" action="{% url 'alta' %}">
+                  {% csrf_token %}
+                  <label for="exampleFormControlInput1" class="form-label">Número Departamento: </label>
+                  <input name="departamento" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce departamento">
 
-                <label for="exampleFormControlInput1" class="form-label">Localidad: </label>
-                <input name="localidad" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce localidad">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre Departamento: </label>
+                  <input name="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce Nombre">
 
+                  <label for="exampleFormControlInput1" class="form-label">Localidad: </label>
+                  <input name="localidad" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce localidad">
+                  <br>
 
-              <button type="submit" class="btn btn-primary btn-lg">Grabar Departamento</button>
-          </form>
+                <button type="submit" class="btn btn-primary btn-lg">Grabar Departamento</button>
+               
+            </form>
+          </div>
         </div>
-
+        <div class="col-4">
+      
+        </div>
 
 
     </div>

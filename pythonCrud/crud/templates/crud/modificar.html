@@ -4,25 +4,43 @@
 
 {% block content %}
     <div class="container">
-      <h1>Modificar departamento</h1>
 
-      <form method="post" action="{% url 'modificar' %}">
-          {% csrf_token %}
-          <label for="exampleFormControlInput1" class="form-label">Número Departamento: </label>
-          <fieldset>
-            <input type="text" name="codigo" list="departamento" />
-              <datalist id="departamento">
-                    {% for dept in departamentos %}
-                        <option value="{{dept.0}}">
-                    {% endfor %}
-              </datalist>
+      <div class="row">
 
-          </fieldset>
+          <div class="col-4">
+      
+          </div>
+          <div class="col-4">
+              <h1>Modificar departamento</h1>
+             
+              <form method="post" action="{% url 'modificar' dept.0 %}">
+                  {% csrf_token %}
+                  <label for="exampleFormControlInput1" class="form-label">Número Departamento: </label>
+                  <fieldset>
+                    <input type="text" name="codigo" value="{{dept.0}}" list="departamento"/>
+                      <datalist id="departamento">
+                            {% for dept in departamentos %}
+                                <option value="{{dept.0}}">
+                            {% endfor %}
+                      </datalist>
+        
+                  </fieldset>
+        
+                  <label for="exampleFormControlInput1" class="form-label">Nombre departamento: </label>
+                  <input name="nombre" value="{{dept.1}}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Introduce Nombre">
+                  <br>
+                  <label for="exampleFormControlInput1" class="form-label">Nombre Localidad: </label>
+                  <input name="localidad" value="{{dept.2}}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Introduce Localidad">
+                  <br>
+                  <button type="submit" class="btn btn-primary btn-lg">Modificar Departamento</button>
+              </form>
+          </div>
+        
+          <div class="col-4">
 
-        <label for="exampleFormControlInput1" class="form-label">Nueva Localidad: </label>
-        <input name="localidad" type="text" class="form-control" id="exampleFormControlInput1" placeholder="introduce Localidad">
+          </div>
 
-        <button type="submit" class="btn btn-primary btn-lg">Modificar Departamento</button>
+
       </form>
 
 
