@@ -3,15 +3,26 @@ from django.contrib import messages
 
 from crud.models import Departamento
 
+def buscar_dept(request):
+    dept = Departamento()
+
+    dept_nombre = request.GET['dept_search']
+    consulta = "SELECT * FROM dept where dnombre=:param1"
+    departamento = dept.lectura_departamento_fetch(consulta, (dept_nombre,))
+    print(departamento)
+    print(len(departamento))
+    
+    return render(request, 'crud/buscar_dept.html', {'departamento':departamento})
+
 def index(request):
-    men = ""
+    
     dept = Departamento()
     consulta = "SELECT * FROM dept order by dept_no"
     #departamentos = dept.lectura_departamento()
     departamentos, contador = dept.lectura_departamento(consulta, param=())
 
-    return render(request, 'crud/indice.html', {'departamentos':departamentos,
-                                                'men':men})
+    return render(request, 'crud/indice.html', {'departamentos':departamentos
+                                                })
 
 
 def alta_dept(request):
@@ -27,11 +38,12 @@ def alta_dept(request):
         consulta = ("INSERT INTO dept (dept_no,dnombre,loc) VALUES (:P1, :P2, :P3)")
 
         departamentos, contador = dept.lectura_departamento(consulta, (departamento, nombre, localidad))
+        
         if contador > 0:
             messages.success(request,f"Enhorabuena has insertado un registro", extra_tags='success')
         else:
             messages.error(request,f"Error Ora-0001 Unique constraint Violated", extra_tags='error' )
-
+        
         return redirect('indice') #, mensaje=mensaj
 
 def leer_departamentos(request):

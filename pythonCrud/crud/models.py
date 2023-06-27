@@ -8,8 +8,7 @@ class Departamento:
         self.connection = cx_Oracle.connect("system", "pythonoracle", "localhost/XE")
 
     def lectura_departamento(self, consulta, param=()):
-        print(consulta)
-        print(param)
+
         cursor = self.connection.cursor()
         try:
             cursor.execute(consulta, param)
@@ -23,18 +22,15 @@ class Departamento:
         return cursor, contador
     
     def lectura_departamento_fetch(self, consulta, param=()):
-        print(consulta)
-        print(param)
+
         cursor = self.connection.cursor()
         try:
             cursor.execute(consulta, param)
-            resultado = cursor.fetchall()
             self.connection.commit()
+            resultado = cursor.fetchall()
 
         except self.connection.Error as error:
             print("Error: ", error)
-        print(resultado)
-        #contador = cursor.rowcount
 
         return resultado
     

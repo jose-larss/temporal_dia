@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nº</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Localidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     
+                        {% for item in departamento %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{item.0}}</td>
+                                <td>{{item.1}}</td>
+                                <td>{{item.2}}</td>
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                  </table>
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
