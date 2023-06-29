@@ -1,0 +1,61 @@
+{% extends 'base_hospital.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+                <h1>Doctores del Hospital</h1>
+                <form method="post" action="{% url 'hospital' %}">
+                    {% csrf_token %}
+                    {% for item in hospitales %}
+                        <div class="form-check">
+                              <input class="form-check-input" name="chkHospi" type="checkbox" value="{{item.0}}" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                {{item.1|title}}
+                              </label>
+                        </div>
+                    {% endfor %}
+                    <br>
+                    <button type="submit" class="btn btn-outline-success">Mostrar Doctores</button>
+                    <button type="reset" class="btn btn-dark">Resetear</button>
+                </form>
+
+                <br>
+                    {% if doctores %}
+                        <table class="table">
+                          <thead>
+                                <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Apellido</th>
+                                      <th scope="col">Especialidad</th>
+                                      <th scope="col">Salario</th>
+                                </tr>
+                          </thead>
+                              <tbody>
+
+                                  {% for item in doctores %}
+                                    <tr>
+                                      <th scope="row">{{forloop.counter}}</th>
+                                      <td>{{item.2}}</td>
+                                      <td>{{item.3}}</td>
+                                      <td>{{item.4}}</td>
+                                    </tr>
+                                  {% endfor %}
+                              </tbody>
+                        </table>
+
+                    {% endif %}
+
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

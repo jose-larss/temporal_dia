@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crud',
+    'cliente',
+    'hospital',
+    'empleados',
+    'multiplesAcciones',
+    'mult_acciones1',
+    'tailProject',
 ]
 
 MIDDLEWARE = [

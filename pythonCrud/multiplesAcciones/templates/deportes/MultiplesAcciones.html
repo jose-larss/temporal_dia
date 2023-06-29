@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <form method="post" action="multiples">
+            {% csrf_token %}
+            <div>
+                Número 1:
+                <input type="text" name="numero1"/>
+            </div>
+            <div>
+                Número 2:
+                <input type="text" name="numero2"/>
+            </div>
+            <div>
+                <button type="submit" name="operacion"
+                    value="sumarNumeros">
+                            Sumar números
+                </button>
+                <button type="submit" name="operacion"
+                    value="multiplicarNumeros">
+                            Multiplicar números
+                </button>
+            </div>
+        </form>
+        {% if resultado %}
+
+            <h2 style='color:red'>La {{operacion}} de los números es: {{resultado}} </H2>
+
+        {% endif %}
+
+</body>
+</html>

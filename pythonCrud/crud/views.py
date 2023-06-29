@@ -3,26 +3,13 @@ from django.contrib import messages
 
 from crud.models import Departamento
 
-def buscar_dept(request):
-    dept = Departamento()
-
-    dept_nombre = request.GET['dept_search']
-    consulta = "SELECT * FROM dept where dnombre=:param1"
-    departamento = dept.lectura_departamento_fetch(consulta, (dept_nombre,))
-    print(departamento)
-    print(len(departamento))
-    
-    return render(request, 'crud/buscar_dept.html', {'departamento':departamento})
-
 def index(request):
-    
     dept = Departamento()
-    consulta = "SELECT * FROM dept order by dept_no"
-    #departamentos = dept.lectura_departamento()
-    departamentos, contador = dept.lectura_departamento(consulta, param=())
 
-    return render(request, 'crud/indice.html', {'departamentos':departamentos
-                                                })
+    consulta = ("SELECT * FROM dept order by dept_no")
+    departamentos, contador = dept.consultaBaseDatos(consulta,  parametros = ())
+
+    return render(request, 'crud/indice.html', {'departamentos':departamentos})
 
 
 def alta_dept(request):
@@ -31,63 +18,66 @@ def alta_dept(request):
         return render(request,'crud/alta.html')
     else:
         dept = Departamento()
+
         departamento = request.POST['departamento']
         nombre = request.POST['nombre']
         localidad = request.POST['localidad']
 
         consulta = ("INSERT INTO dept (dept_no,dnombre,loc) VALUES (:P1, :P2, :P3)")
 
-        departamentos, contador = dept.lectura_departamento(consulta, (departamento, nombre, localidad))
-        
+        departamentos, contador = dept.consultaBaseDatos(consulta, (departamento, nombre, localidad))
+
         if contador > 0:
-            messages.success(request,f"Enhorabuena has insertado un registro", extra_tags='success')
+            messages.success(request,f"Enhorabuena has insertado un registro {departamento} {nombre} {localidad}")
         else:
-            messages.error(request,f"Error Ora-0001 Unique constraint Violated", extra_tags='error' )
-        
+            messages.error(request, f"Error el Registro existe!! MODIFICALO")
+
         return redirect('indice') #, mensaje=mensaj
 
 def leer_departamentos(request):
     dept = Departamento()
-    consulta = "SELECT * FROM dept order by dept_no"
 
-    departamentos,contador = dept.lectura_departamento(consulta)
+    departamentos, contador= dept.consultaBaseDatos()
 
     return render(request, 'crud/leer.html', {'departamentos':departamentos})
 
-def baja_departamento(request, id_borrar):
+def baja_departamento(request, id_baja):
 
     dept = Departamento()
-    consulta = ("Delete from dept where dept_no=:param1")
-    departamento, contador = dept.lectura_departamento(consulta, (id_borrar,))
 
-    messages.success(request, f"Enhorabuena has borrado el departamento numero {id_borrar}", extra_tags='success')
+    #departamentos = dept.lectura_departamento()
+    """
+    if request.method != 'POST':
+        return render(request, 'crud/baja.html', {'departamentos':departamentos})
+    else
+    """
+    #codigo = int(request.POST['codigo'])
+    #print(type(codigo))
+    consulta = ("Delete from dept where dept_no=:param1")
+    departamentos, contador = dept.consultaBaseDatos(consulta, (id_baja,))
+
+    messages.error(request, f"Enhorabuena has borrado el departamento número {id_baja}")
 
     return redirect('indice')
 
-def modificar_departamento(request, id_modi):
+def modificar_departamento(request, id_mod):
 
     dept = Departamento()
-    consulta = ("SELECT * FROM dept where dept_no=:param1")
-    dept, contador = dept.lectura_departamento(consulta,(id_modi,))
+    consulta = ("select * from dept where dept_no=:param1")
+    departamento, contador = dept.consultaBaseDatos(consulta, (id_mod,))
 
-    for item in dept:
+    for dept in departamento:
         pass
-
     if request.method != 'POST':
-        return render(request, 'crud/modificar.html', {#'departamentos':departamentos, 
-                                                        'dept':item})
-    
+        return render(request, 'crud/modificar.html', {'departamento':dept})
     else:
-        dept2 = Departamento()
-
-        codigo = request.POST['codigo']
-        nombre = request.POST['nombre']
+        #codigo = request.POST['codigo']
         localidad = request.POST['localidad']
+        #print(request.POST['codigo'])
+        print(request.POST['localidad'])
+        dept2 = Departamento()
+        consulta = ("Update dept set loc=:Param1 where dept_no=:Param2")
+        departamentos, contador = dept2.consultaBaseDatos(consulta, (localidad, id_mod))
 
-        consulta = ("Update dept set loc=:Param1, dnombre=:Param2  where dept_no=:Param3")
-
-        departamentos, contador = dept2.lectura_departamento(consulta, (localidad, nombre ,codigo))
-
-        messages.success(request, f"Enhorabuena has Modificado el departamento a {codigo} {nombre} {localidad}", extra_tags='success')
+        messages.success(request, f"Enhorabuena has Modificado el departamento numero: {id_mod} nombre: {dept[1]} localidad: {localidad}")
         return redirect('indice')
-    

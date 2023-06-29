@@ -1,0 +1,58 @@
+{% extends 'base_empleados.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+              <h1>Insertar Empleado:</h1>
+                <form method="post" action="{% url 'insertar' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Emp_no</label>
+                        <input type="number" name="emp_no" class="form-control" id="exampleFormControlInput1" placeholder="Numero empleado">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+                        <input type="text" name="apellido" class="form-control" id="exampleFormControlInput1" placeholder="Apellido">
+                      </div>>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Oficio</label>
+                        <input type="text" name="oficio" class="form-control" id="exampleFormControlInput1" placeholder="Oficio">
+                      </div>>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Dir</label>
+                        <input type="number" name="dir" class="form-control" id="exampleFormControlInput1" placeholder="Dir">
+                      </div>>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Fecha Alta</label>
+                        <input type="date" name="fecha" class="form-control" id="exampleFormControlInput1" placeholder="Fecha alta">
+                      </div>>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Salario</label>
+                        <input type="number" name="salario" class="form-control" id="exampleFormControlInput1" placeholder="Salario">
+                      </div>>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Comision</label>
+                        <input type="number" name="comision" class="form-control" id="exampleFormControlInput1" placeholder="Comision">
+                      </div>>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Dept_NO</label>
+                        <input type="number" name="dept_no" class="form-control" id="exampleFormControlInput1" placeholder="Numero departamento">
+                      </div>>
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+
+                </form>
+
+
+            </div>
+          <div class="col-2">
+
+          </div>
+        </div>
+    </div>
+{% endblock content %}

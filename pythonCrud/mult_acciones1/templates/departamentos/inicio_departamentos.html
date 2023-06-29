@@ -1,0 +1,68 @@
+{% extends 'base_mult_acciones1.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+          <div class="col-8">
+
+            <h1>Departamentos</h1>
+
+              <form method="post" action="">
+                    {% csrf_token %}
+
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nº departamento</label>
+                  <input type="number" name="numero" class="form-control" id="exampleFormControlInput1" placeholder="Introduce nº departamento">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre Departamento</label>
+                  <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Introduce nombre">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Localidad</label>
+                  <input type="text" name="localidad" class="form-control" id="exampleFormControlInput1" placeholder="Introduce localidad">
+              </div>
+              <button type="submit" name="opcion" value="insertar" class="btn btn-outline-success">Insertar</button>
+              <button type="submit" name="opcion" value="modificar" class="btn btn-outline-success">Modificar</button>
+              <button type="submit" name="opcion" value="eliminar" class="btn btn-outline-success">Eliminar</button>
+              </form>
+
+                {% if mensaje %}
+                    <h3>{{mensaje}}</h3>
+                {% endif %}
+
+              <h1>Listado departamentos:</h1>
+
+              <table class="table">
+                  <thead>
+                    <tr>
+
+                      <th scope="col">Nº Dept</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Localidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for dept in departamentos %}
+                    <tr>
+
+                      <td>{{dept.0}}</td>
+                      <td>{{dept.1}}</td>
+                      <td>{{dept.2}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+          </div>
+          <div class="col-2">
+
+          </div>
+        </div>
+    </div>
+{% endblock content %}

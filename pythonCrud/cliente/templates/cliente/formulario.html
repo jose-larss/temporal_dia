@@ -1,0 +1,101 @@
+{% extends 'base_cliente.html' %}
+
+{% block title %}indice{% endblock title%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+
+                <form method="post" action="{% url 'procesar' %}">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Nombre:</label>
+                          <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Introduce Nombre">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Primer apellido:</label>
+                          <input type="text" name="primer" class="form-control" id="exampleFormControlInput1" placeholder="Introduce Primer apelido">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Segundo Apellido:</label>
+                          <input type="text" name="segundo" class="form-control" id="exampleFormControlInput1" placeholder="Introduce Segundo apelido">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Domicilio:</label>
+                          <input type="text" name="domicilio" class="form-control" id="exampleFormControlInput1" placeholder="Introduce Domicilio">
+                        </div>
+                        <div class="mb-3">
+                             <label for="exampleFormControlInput1" class="form-label">Ciudad:</label>
+                            <select name="ciudad" class="form-select" aria-label="Default select example">
+                              <option selected>Open this select menu</option>
+                              <option value="madrid">Madrid</option>
+                              <option value="barcelona">Barcelona</option>
+                              <option value="sevilla">Sevilla</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                             <label for="exampleFormControlInput1" class="form-label">Sexo</label>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="sexo" value="hombre" id="flexRadioDefault1">
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                Hombre
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="sexo" value="mujer" id="flexRadioDefault2" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                Mujer:
+                              </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Sistema Operativo:</label>
+                                <div class="form-check">
+                                  <input class="form-check-input" name="so" type="checkbox" value="windows10" id="flexCheckDefault">
+                                  <label class="form-check-label" for="flexCheckDefault">
+                                    windows 10
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" name="so" type="checkbox" value="windows7" id="flexCheckChecked" >
+                                  <label class="form-check-label" for="flexCheckChecked">
+                                    Windows 7
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" name="so" type="checkbox" value="linux" id="flexCheckChecked" >
+                                  <label class="form-check-label" for="flexCheckChecked">
+                                     Linux
+                                  </label>
+                                </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="exampleFormControlTextarea1" class="form-label">Introduzca sus comentarios:</label>
+                          <textarea class="form-control" name="area" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar: </button>
+
+                </form>
+
+
+
+
+            </div>
+
+
+            <div class="col-2">
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock content %}
