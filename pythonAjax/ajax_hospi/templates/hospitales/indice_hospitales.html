@@ -1,0 +1,65 @@
+{% extends 'base_hospi.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8">
+                <h1>Página Principal de detalles:</h1>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h5>Hospitales</h5>
+                        <button type="button" class="btn btn-primary" id="btnhospitales">Hospitales</button>
+                        <div id="detallehospitales" ></div> <!--style="display: none"-->
+                    </li>
+
+                    <li class="list-group-item">
+                        <h5>Doctores</h5>
+                        <button type="button" class="btn btn-primary" id="btndoctores">Doctores</button>
+                        <div id="detalledoctores" ></div> <!--style="display: none"-->
+                    </li>
+
+                    <li class="list-group-item">
+                        <h5>Plantilla</h5>
+                        <button type="button" class="btn btn-primary" id="btnplantilla">Plantilla</button>
+                        <div id="detalleplantilla" ></div> <!--style="display: none"-->
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+
+{% block javascript %}
+        <script>
+            $(document).ready(function () {
+                $("#btnhospitales").click(function () {
+                    $("#detallehospitales").toggle("slow");
+                    $("#detallehospitales").load("hospitales");
+                });
+                 $("#btndoctores").click(function () {
+                    $("#detalledoctores").toggle("slow");
+                    $("#detalledoctores").load("doctores");
+                });
+                $("#btnplantilla").click(function () {
+                    $("#detalleplantilla").toggle("slow");
+                    $("#detalleplantilla").load("plantilla");
+                });
+
+            });
+        </script>
+
+{% endblock javascript %}

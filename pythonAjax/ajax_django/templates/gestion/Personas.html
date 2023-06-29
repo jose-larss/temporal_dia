@@ -1,0 +1,14 @@
+
+    <table border="1">
+        <tr>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+        </tr>
+        {% for perso in listado_Personas%}
+
+            <tr>
+                <td>{{perso.nombre}}</td>
+                <td>{{perso.apellido}}</td>
+            </tr>
+       {% endfor%}
+    </table>
