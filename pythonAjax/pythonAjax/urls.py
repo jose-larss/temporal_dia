@@ -18,7 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('ajax_django.urls')),
+
+    path('parametro/',include('parametrosAjax.urls')),
+    path('enlace/', include('ajaxEnlace.urls')),
     path('hospi/', include('ajax_hospi.urls')),
     path('admin/', admin.site.urls),
+    path('', include('ajax_django.urls')),
 ]

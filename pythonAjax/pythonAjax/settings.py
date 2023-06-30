@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ajax_django',
     'ajax_hospi',
+    'ajaxEnlace',
+    'parametrosAjax',
 ]
 
 MIDDLEWARE = [

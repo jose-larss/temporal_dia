@@ -1,0 +1,44 @@
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8">
+                <table class="table table-bordered border-primary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Apellido</th>
+                          <th scope="col">Salario</th>
+                          <th scope="col">Hospital</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in plantilla %}
+                                <tr>
+                                  <th scope="row">{{forloop.counter}}</th>
+                                  <td>{{item.3}}</td>
+                                  <td>{{item.6}}</td>
+                                  <td>{{item.2}}</td>
+
+                                </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+
