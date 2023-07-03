@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}listado Star Wars{% endblock title %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+                {{mensaje}}
+                <h1>Personajes de Star Wars</h1>
+
+                <table class="table table-bordered border-primary">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Altura</th>
+                      <th scope="col">Peso</th>
+                      <th scope="col">color de pelo</th>
+                      <th scope="col">color de piel</th>
+                      <th scope="col">color ojos</th>
+                        <th scope="col">Nacimiento</th>
+                      <th scope="col">Genero</th>
+                        <th scope="col">Mundo</th>
+                      <th scope="col">Peliculas</th>
+                        <th scope="col">especies</th>
+                        <th scope="col">Vehiculos</th>
+                      <th scope="col">Tropas</th>
+                        <th scope="col">Creado</th>
+                        <th scope="col">Modificado</th>
+                        <th scope="col">Url</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for key, value in personajes.items %}
+                          {% if key == 'results' %}
+                                {% for item2 in value %}
+                                    <tr>
+                                      <th scope="row">{{forloop.counter}}</th>
+                                      <td>{{item2.name}}</td>
+                                      <td>{{item2.height}}</td>
+                                      <td>{{item2.mass}}</td>
+                                        <td>{{item2.hair_color}}</td>
+                                      <td>{{item2.skin_color}}</td>
+                                      <td>{{item2.eye_color}}</td>
+                                        <td>{{item2.birth_year}}</td>
+                                      <td>{{item2.gender}}</td>
+
+                                        <td>{{item2.homeworld}}</td>
+                                        <td>
+                                            {% for peli in item2.films %}
+                                                <a href="">{{peli}}</a>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for especie in item2.species %}
+                                                {{especie}}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for vehicle in item2.vehicles %}
+                                                {{vehicle}}
+                                            {% endfor %}
+                                        </td>
+
+                                        <td>
+                                            {% for star in item2.starships %}
+                                                {{star}}
+                                            {% endfor %}
+                                        </td>
+                                        <td>{{item2.created}}</td>
+                                        <td>{{item2.edited}}</td>
+                                        <td>{{item2.url}}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif%}
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+
