@@ -9,11 +9,19 @@ from pyspark.sql import SparkSession
 sqlc = SparkSession.builder.getOrCreate()
 empleados = sqlc.read.json("C:\\APACHESPARK\\empleados.json")
 
+print(empleados)
+#for item in empleados['apellido']:
+#    print(item)
+
 # PASO MUY IMPORTANTE: Generamos una tabla llamada EMP con los datos del JSON.
 # Al generar la tabla podemos realizar consultas SQL.
 
 empleados.createOrReplaceTempView("EMP")
+
 dp = sqlc.read.json("C:\\APACHESPARK\\departamentos.json")
+print(dp)
+
+
 dp.createOrReplaceTempView("DEPT")
 
 
